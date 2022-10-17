@@ -8,10 +8,12 @@ import axios from "axios";
 
 function App() {
   const todos = useSelector((state) => state.todos.todos);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTodos());
-  }, []);
+  //Call API
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getTodos());
+  // }, []);
+  //Call API 2
   // useEffect(() => {
   //   axios("https://jsonplaceholder.typicode.com/todos?_limit=5")
   //     .then((response) => {

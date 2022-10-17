@@ -15,7 +15,7 @@ function Footer() {
       case "active":
         return 2;
       default:
-        break;
+        return 1;
     }
   });
   const dispatch = useDispatch();
