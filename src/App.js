@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/header";
+import Main from "./components/main";
+import { useDispatch, useSelector } from "react-redux";
+import Footer from "./components/footer";
+import { useEffect } from "react";
+import { getTodos } from "./store/reducers/todoSlice";
+import axios from "axios";
 
 function App() {
+  const todos = useSelector((state) => state.todos.todos);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTodos());
+  }, []);
+  // useEffect(() => {
+  //   axios("https://jsonplaceholder.typicode.com/todos?_limit=5")
+  //     .then((response) => {
+  //       dispatch(getTodos(response.data));
+  //     })
+  //     .catch(() => console.log("error"));
+  // }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="todoapp">
+      <Header />
+      {todos.length > 0 && <Main />}
+      {todos.length > 0 && <Footer />}
+    </section>
   );
 }
 
