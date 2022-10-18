@@ -104,13 +104,30 @@ body {
   background: rgba(0, 0, 0, 0.003);
   box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
 }
-
+.addJob {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  background-color: #ff9400;
+  color: #fff;
+  transform: translateY(-50%);
+  border: 1px solid #ff0000c4;
+  padding: 8px;
+  border-radius: 12px;
+}
+.addJob:active,
+.addJob:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
 .main {
   position: relative;
   z-index: 2;
   border-top: 1px solid #e6e6e6;
 }
-
+.header {
+  position: relative;
+}
 .toggle-all {
   width: 1px;
   height: 1px;

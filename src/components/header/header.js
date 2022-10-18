@@ -1,13 +1,15 @@
 import { useDispatch } from "react-redux";
-import { useState, memo } from "react";
+import { useState, memo, useRef } from "react";
 import { addTodo } from "../../store/reducers/todoSlice";
 
 function Header() {
   const [job, setJob] = useState("");
   const dispatch = useDispatch();
+  const input = useRef();
   const handleAddJob = (e) => {
-    if (e.code === "Enter" && e.target.value) {
-      dispatch(addTodo(e.target.value));
+    if (e.code === "Enter" && input.current.value) {
+      console.log("asd");
+      dispatch(addTodo(input.current.value));
       setJob("");
     }
   };
@@ -15,6 +17,7 @@ function Header() {
     <header className="header">
       <h1>todos</h1>
       <input
+        ref={input}
         className="new-todo"
         placeholder="What needs to be done?"
         value={job}
@@ -22,6 +25,12 @@ function Header() {
         onKeyUp={(e) => handleAddJob(e)}
         autoFocus
       />
+      <button
+        className="addJob"
+        onClick={() => handleAddJob({ code: "Enter" })}
+      >
+        ADD
+      </button>
     </header>
   );
 }
